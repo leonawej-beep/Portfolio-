@@ -1,1 +1,324 @@
- 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - under rishind </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Configuration Tailwind personnalisée pour les animations
+        tailwind.config = {
+            theme: {
+                extend: { 
+                    animation: {
+                        'fade-in-up': 'fadeInUp 1s ease-out',
+                        'slide-in-up': 'slideInUp 0.8s ease-out forwards',
+                        'bounce-slow': 'bounce-slow 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse-slow 4s ease-in-out infinite',
+                        'spin-slow': 'spin-slow 20s linear infinite',
+                        'expand': 'expand 1s ease-out',
+                        'gradient-shift': 'gradientShift 3s ease infinite',
+                        'particle-float': 'particle-float 10s infinite linear',
+                        'shimmer': 'shimmer 2s infinite'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-black text-white overflow-x-hidden">
+    <!-- Fond animé de particules généré par JavaScript -->
+    <div class="fixed inset-0 pointer-events-none z-0" id="particles-container">
+        <!-- Les particules sont ajoutées dynamiquement -->
+    </div>
+
+    <!-- Barre de navigation principale (desktop et mobile) -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo du portfolio -->
+                <div class="text-2xl font-bold text-blue-400 hover:scale-110 transition-transform cursor-pointer">
+                    <span class="text-white">&lt;</span>Dev under leo<span class="text-white">/&gt;</span>
+                </div>
+                
+                <!-- Menu de navigation desktop -->
+                <div class="hidden md:flex space-x-8">
+                    <button onclick="scrollToSection('home')" class="nav-link capitalize hover:text-blue-400 transition-all duration-300 hover:scale-110 relative text-blue-400" data-section="home">
+                        Accueil
+                        <div class="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-400 animate-expand"></div>
+                    </button>
+                    <button onclick="scrollToSection('about')" class="nav-link capitalize hover:text-blue-400 transition-all duration-300 hover:scale-110 relative text-white" data-section="about">
+                        À Propos
+                    </button>
+                    <button onclick="scrollToSection('skills')" class="nav-link capitalize hover:text-blue-400 transition-all duration-300 hover:scale-110 relative text-white" data-section="skills">
+                        Compétences
+                    </button>
+                    <button onclick="scrollToSection('projects')" class="nav-link capitalize hover:text-blue-400 transition-all duration-300 hover:scale-110 relative text-white" data-section="projects">
+                        Projets
+                    </button>
+                    <button onclick="scrollToSection('contact')" class="nav-link capitalize hover:text-blue-400 transition-all duration-300 hover:scale-110 relative text-white" data-section="contact">
+                        Contact
+                    </button>
+                </div>
+
+                <!-- Bouton menu mobile (hamburger) -->
+                <button class="md:hidden text-white hover:text-blue-400 transition-colors" id="mobile-menu-toggle">
+                    <div class="w-6 h-6 flex flex-col justify-center space-y-1">
+                        <div class="w-full h-0.5 bg-current transition-all duration-300" id="hamburger-1"></div>
+                        <div class="w-full h-0.5 bg-current transition-all duration-300" id="hamburger-2"></div>
+                        <div class="w-full h-0.5 bg-current transition-all duration-300" id="hamburger-3"></div>
+                    </div>
+                </button>
+            </div>
+
+            <!-- Menu mobile déroulant -->
+            <div class="md:hidden transition-all duration-300 overflow-hidden max-h-0" id="mobile-menu">
+                <div class="flex flex-col space-y-2 mt-4 border-t border-gray-700 pt-4">
+                    <button onclick="scrollToSection('home')" class="text-left py-2 hover:text-blue-400 transition-colors hover:translate-x-2">Accueil</button>
+                    <button onclick="scrollToSection('about')" class="text-left py-2 hover:text-blue-400 transition-colors hover:translate-x-2">À Propos</button>
+                    <button onclick="scrollToSection('skills')" class="text-left py-2 hover:text-blue-400 transition-colors hover:translate-x-2">Compétences</button>
+                    <button onclick="scrollToSection('projects')" class="text-left py-2 hover:text-blue-400 transition-colors hover:translate-x-2">Projets</button>
+                    <button onclick="scrollToSection('contact')" class="text-left py-2 hover:text-blue-400 transition-colors hover:translate-x-2">Contact</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section d'accueil (Hero) avec effet de texte animé -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <!-- Dégradé d'arrière-plan -->
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <div class="animate-fade-in-up">
+                <!-- Titre principal avec effet de saisie -->
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                    <span class="text-blue-400">Développeur</span>
+                    <br />
+                    <span class="text-gradient" id="typing-text">full-Stack</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 text-gray-300 max-w-3xl mx-auto">
+                    Spécialiste en python, VBA Excel, JavaScript, React et CSS, je transforme vos idée en applications 
+                    performaantes et automatisation intelligentes.
+
+                    Passionné par le développement de solutions innovantes, j'aide les entreprise à optimiser leurs processus 
+                    et à attiendre leurs objectifs technologiques 
+                </p>
+                <!-- Boutons d'action principaux -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button
+                        onclick="scrollToSection('projects')"
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/50 relative overflow-hidden group"
+                    >
+                        <span class="relative z-10">Voir mes projets</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-blue-700 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+                    </button>
+                    <button
+                        onclick="downloadCV()"
+                        class="border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-black px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 relative overflow-hidden group"
+                    >
+                        <span class="relative z-10">📄 Télécharger mon CV complet</span>
+                        <span class="relative z-5"> Découvrez mon parcours et mes Compétences en détail </span>
+                        <div class="absolute inset-0 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Eléments décoratifs animés en arrière-plan -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="floating-element absolute top-20 left-10 w-20 h-20 bg-blue-500/20 rounded-full animate-bounce-slow"></div>
+            <div class="floating-element absolute top-40 right-20 w-16 h-16 bg-purple-500/20 rounded-full animate-pulse-slow" style="animation-delay: 2s;"></div>
+            <div class="floating-element absolute bottom-20 left-20 w-24 h-24 bg-blue-400/20 rounded-full animate-spin-slow" style="animation-delay: 4s;"></div>
+            <div class="floating-element absolute top-1/2 right-10 w-12 h-12 bg-cyan-500/20 rounded-full" style="animation-delay: 6s;"></div>
+        </div>
+    </section>
+
+    <!-- Section À propos -->
+    <section id="about" class="py-20 bg-black/50 transition-all duration-1000 opacity-0 translate-y-10 section-animate">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    <span class="text-blue-400">À Propos</span> de Moi
+                </h2>
+                <div class="w-24 h-1 bg-blue-400 mx-auto animate-expand"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Avatar et présentation -->
+                <div class="text-center md:text-left">
+                    <div class="w-64 h-64 md:w-96 md:h-96 mx-auto md:mx-8 rounded-full bg-gradient-to-br from-blue-400 to-purple-600 p-0 mb-8 hover:scale-110 transition-transform duration-500 relative overflow-hidden group">
+                        <div class="w-full h-full rounded-full bg-gray-800 flex items-center justify-center text-6xl relative z-10">
+                            <img src="c:\Users\leo under\Desktop\under\IMG-20250305-WA0027.jpg" alt="">
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-800 rounded-full scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+                    </div>
+                </div>
+                
+                <!-- Texte de présentation -->
+                <div class="space-y-6">
+                    <h3 class="text-2xl md:text-3xl font-bold text-blue-400">Développeur Frontend Passionné</h3>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Étudiant Développeur Frontend,  et des interfaces ergonomiques. Spécialisé dans React,python,JavaScript et CSS,
+                    </p>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Expert en python, VBA et CSS moderne, je crée des expériences utilisateur 
+                        Passionné par les nouvelles technologies et toujours 
+                        avec une vision claire de ce je veux devenir .
+                    </p>
+                    <div class="flex flex-wrap gap-4 mt-8">
+                        <div class="bg-blue-600/20 px-4 py-2 rounded-full hover:bg-blue-600/40 transition-colors">
+                            <span class="text-blue-400 font-semibold">1 ans d'expérience</span>
+                        </div>
+                        <div class="bg-purple-600/20 px-4 py-2 rounded-full hover:bg-purple-600/40 transition-colors">
+                            <span class="text-purple-400 font-semibold">1 projet réalisé</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Compétences (skills) générée dynamiquement -->
+    <section id="skills" class="py-20 transition-all duration-1000 opacity-0 translate-y-10 section-animate">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    Mes <span class="text-blue-400">Compétences Tecniques clé</s> </span>
+                </h2>
+                <div class="w-24 h-1 bg-blue-400 mx-auto animate-expand"></div>
+            </div>     
+            <!-- Les cartes de compétences sont injectées ici par JavaScript -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="skills-container">
+                <!-- Les compétences apparaîtront ici -->
+            </div>
+        </div>
+    </section>
+    <!-- Section Projets générée dynamiquement -->
+    <section id="projects" class="py-20 bg-black/50 transition-all duration-1000 opacity-0 translate-y-10 section-animate">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    Mes <span class="text-blue-400">Projets</span>
+                </h2>
+                <div class="w-24 h-1 bg-blue-400 mx-auto animate-expand"></div>
+            </div>
+            
+            <!-- Les cartes de projets sont injectées ici par JavaScript -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-container">
+                <!-- Les projets apparaîtront ici -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact avec formulaire -->
+    <section id="contact" class="py-20 transition-all duration-1000 opacity-0 translate-y-10 section-animate">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    <span class="text-blue-500">Contactez</span> Moi
+                </h2>
+                <div class="w-25 h-1 bg-blue-400 mx-auto animate-expand"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Informations de contact -->
+                <div class="space-y-8">
+                    <div class="flex items-center space-x-4 hover:transform hover:translate-x-2 transition-transform">
+                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <span class="text-xl">📧</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Email</h3>
+                            <p class="text-gray-400">underleo1@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4 hover:transform hover:translate-x-2 transition-transform">
+                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <span class="text-xl">📱</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Téléphone</h3>
+                            <p class="text-gray-400">+243 99 27 73 403</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4 hover:transform hover:translate-x-2 transition-transform">
+                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <span class="text-xl">🌐</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Réseaux Sociaux</h3>
+                            <div class="flex space-x-4 mt-2">
+                                <a href="https://www.linkedin.com/in/under-leo-52442839b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="text-blue-400 hover:text-blue-300 hover:scale-110 transition-all">LinkedIn</a>
+                                <a href="https://github.com/leonawej-beep" class="text-gray-400 hover:text-gray-300 hover:scale-110 transition-all">GitHub</a>
+                                <a href="https://wa.me/message/VJRJ2TU2J7KBJ1" class="text-purple-400 hover:text-purple-300 hover:scale-110 transition-all">Whatsapp</a>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+                
+                <!-- Formulaire de contact -->
+                <div class="bg-black/50 p-8 rounded-xl hover:bg-black/70 transition-colors">
+                    <form class="space-y-6" id="contact-form" action="https://formspree.io/f/meokpowv" method="POST">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Nom</label>
+                            <input 
+                                type="text" 
+                                name="name"
+                                class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all"
+                                placeholder="Votre nom"
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Email</label>
+                            <input 
+                                type="email" 
+                                name="email"
+                                class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all"
+                                placeholder="votre@email.com"
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Message</label>
+                            <textarea 
+                                rows="4" 
+                                name="message"
+                                class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all resize-none"
+                                placeholder="Votre message..."
+                                required
+                            ></textarea>
+                        </div>
+                        <!-- Champ caché pour rediriger ou afficher un message -->
+                        <input type="hidden" name="_next" value="#contact-success" />
+                        <button 
+                            type="submit" 
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/50 transform hover:scale-105"
+                        >
+                            Envoyer le message
+                        </button>
+                        <div id="contact-success" class="hidden text-green-400 font-semibold mt-4">Message envoyé avec succès !</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<footer class="bg-black py-8">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center items-center space-x-2 mb-4">
+                <span class="text-blue-400 text-2xl font-bold">&lt;</span>
+                <span class="text-white text-xl">Dev under rishind </span>
+                <span class="text-blue-400 text-2xl font-bold">/&gt;</span>
+            </div>
+            <p class="text-gray-400">© 2026 Dev under rishind.  Contactez Moi maintenant,</p>
+        </div>
+    </footer>
+
+    <!-- Inclusion du script principal -->
+    <script src="script.js"></script>
+</body>
+</html> 
