@@ -454,4 +454,4 @@ window.downloadCV = downloadCV;
 
 // Affichage des données dans la console au chargement
 console.log('Skills:', skills);
-console.log('Projects:', projects);
+console.log('Projects:', projects); 
