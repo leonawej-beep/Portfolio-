@@ -1,4 +1,4 @@
-// --- Données des compétences (skills) ---
+ // --- Données des compétences (skills) ---
 const skills = [
     { name: 'JavaScript', icon: '🟨' },
     { name: 'React.js', icon: '⚛️' },
@@ -397,17 +397,17 @@ function initializeTypingEffect() {
 async function downloadCV() {
     try {
         // Essaye d'abord avec le chemin absolu depuis la racine du site
-        let response = await fetch('c:\Users\leo under\Desktop\CV.pdf');
+        let response = await fetch('/CV.pdf');
         if (!response.ok) {
             // Si échec, essaye avec le chemin relatif
-            response = await fetch('c:\Users\leo under\Desktop\CV.pdf');
+            response = await fetch('./CV.pdf');
         }
         if (response.ok) {
             const blob = await response.blob();
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'c:\Users\leo under\Desktop\CV.pdf';
+            a.download = 'CV.pdf';
             document.body.appendChild(a);
             a.click();
             window.URL.revokeObjectURL(url);
@@ -454,4 +454,4 @@ window.downloadCV = downloadCV;
 
 // Affichage des données dans la console au chargement
 console.log('Skills:', skills);
-console.log('Projects:', projects); 
+console.log('Projects:', projects);
