@@ -1,10 +1,10 @@
  // --- Données des compétences (skills) ---
 const skills = [
+    { name: 'python', icon: '🐍' },
     { name: 'JavaScript', icon: '🟨' },
     { name: 'React.js', icon: '⚛️' },
     { name: 'Next.js', icon: '➡️' },
-    { name: 'CSS', icon: '🎨' },
-    { name: 'python', icon: '🐍' },
+    { name: 'CSS', icon: '🎨' },   
     { name: 'React Native', icon: '📱' },
     { name: 'Vba', icon: '📊' },
     { name: 'IA Consulting', icon: '🤖' }
