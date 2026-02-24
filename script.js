@@ -17,7 +17,7 @@ const projects = [
         title: 'Portfolio Personnel',
         description: 'Portfolio personnel moderne avec animations CSS avancées et design responsive.',
         technologies: ['HTML', 'Tailwind CSS', 'JavaScript'],
-        image: 'https://unsplash.com/fr/photos/z3dYDNfZBeI',
+        image: 'https://unsplash.com/fr/photos/moniteur-dordinateur-a-ecran-plat-noir-sur-un-bureau-en-bois-noir-4dMvs-KDYvo',
         demoUrl: '',
         codeUrl: 'https://github.com/leonawej-beep/Portfolio-.git',
         longDescription: 'Portfolio personnel mettant en avant:\n- Animations CSS personnalisées\n- Design responsive\n- Mode sombre/clair\n- Formulaire de contact\n- Galerie de projets\n- Performance optimisée',
